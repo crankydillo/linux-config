@@ -1,0 +1,2 @@
+#!/bin/sh
+cvs stat 2>&1 | egrep "(Locally|Conflict|Needs)"

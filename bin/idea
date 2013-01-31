@@ -1,0 +1,19 @@
+#!/bin/bash
+ 
+export JDK_HOME=/opt/jdk1.6.0_26
+export JAVA_HOME=$JDK_HOME/jre
+ 
+#export IDEA_HOME=/opt/idea-IC-107.322
+#export IDEA_HOME=/opt/idea-IC-111.69
+#export IDEA_HOME=/opt/idea-IC-117.798
+export IDEA_HOME=/opt/idea-IC-123.72
+export M2_HOME=/opt/apache-maven-3.0.4
+ 
+export IDEA_VM_OPTIONS="$IDEA_HOME/bin/idea.vmoptions"
+export IDEA_PROPERTIES="$IDEA_HOME/bin/idea.properties"
+export REQUIRED_JVM_ARGS="-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true"
+ 
+cd "$IDEA_HOME/bin"
+export LIBXCB_ALLOW_SLOPPY_LOCK=1
+
+./idea.sh $@

@@ -1,0 +1,2 @@
+#!/bin/bash
+vnc4server :1 -geometry  1280x1020 -depth 16 -once -fp /usr/share/fonts/X11/misc -DisconnectClients=0 -NeverShared passwordFile=/home/scox/.vnc/passwd -extension XFIXES

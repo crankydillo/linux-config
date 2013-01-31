@@ -1,0 +1,4 @@
+#!/bin/bash
+FILENAME=checkstyle_results-$(date +%Y%m%d)_$(date +%H.%M.%S).xml
+java -jar /opt/java/checkstyle-5.0-beta01/checkstyle-all-5.0-beta01.jar com.puppycrawl.tools.checkstyle.Main -o $FILENAME -c /opt/java/checkstyle-5.0-beta01/samuel_checks.xml -f xml -r $1
+sed -i 's/\(<?xml version="1.0" encoding="UTF-8"?>\)/\1\n<?xml-stylesheet type="text\/xsl" href="checkstyle-noframes.xsl"?>/' $FILENAME

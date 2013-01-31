@@ -1,0 +1,2 @@
+#!/bin/bash
+java -jar /opt/java/restclient/restclient-ui-2.3-jar-with-dependencies.jar

@@ -1,0 +1,2 @@
+#!/bin/bash
+/usr/bin/xterm -fa "Bitstream Sans Vera Mono:size=10"

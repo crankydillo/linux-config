@@ -1,0 +1,8 @@
+#!/bin/bash
+
+amixerout=$(amixer get 'Master',0 | grep Mono:)
+vol=0%
+if [[ "$amixerout" != *off* ]]; then
+    vol=$(echo $amixerout | egrep -o '[0-9]{1,3}%')
+fi
+echo "$vol"
