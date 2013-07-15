@@ -6,6 +6,7 @@ import XMonad.Util.WorkspaceCompare
 import XMonad.Operations
 import XMonad.Prompt
 import XMonad.Prompt.Shell
+import XMonad.Prompt.AppendFile
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Util.Run
@@ -16,6 +17,7 @@ import XMonad.Actions.CycleWS
 import XMonad.Actions.PhysicalScreens
 --import XMonad.Layout.IndependentScreens
 --import XMonad.Layout.Magnifier
+import XMonad.Layout.Tabbed
 import XMonad.Layout.ToggleLayouts
 import XMonad.Layout.ThreeColumns
 import XMonad.Layout.ResizableTile
@@ -32,7 +34,7 @@ import Data.Maybe (isNothing, isJust)
 import qualified Data.Map as M
 import System.IO
 
-myLayout = ResizableTall 1 (3/100) (1/2) [] ||| Mirror tiled ||| noBorders Full
+myLayout = ResizableTall 1 (3/100) (1/2) [] ||| Mirror tiled ||| (tabbed shrinkText myTabConfig)
   where
      -- default tiling algorithm partitions the screen into two panes
      tiled   = Tall nmaster delta ratio
@@ -55,6 +57,14 @@ main = do statusBarPipe <- spawnPipe myStatusBar
             , logHook = takeTopFocus >> (dynamicLogWithPP $ myLogHook statusBarPipe)
             , startupHook = setWMName "LG3D"
           } `additionalKeysP` myKeys
+
+myTabConfig = defaultTheme { 
+                 fontName = "Monospace"
+                 , activeTextColor = "#00ff00"
+                 , activeColor = "#989898"
+                 --, inactiveBorderColor = "#989898"
+                 --, inactiveColor = "#ffbb33"
+              }
 
 -- bindPPoutput pp h = pp { ppOutput = hPutStrLn h }
 
@@ -89,8 +99,10 @@ myKeys =
 	[   
             ("M-r", shellPrompt myXPConfig)
             , ("M-f", spawn "firefox")
+            , ("M-n", appendFilePrompt defaultXPConfig "/home/samuel/NOTES")
             , ("M-c", spawn "google-chrome")
             , ("M-e", spawn "/home/samuel/bin/explore")
+            , ("M-S-t", spawn "mate-system-monitor")
             , ("M-a", sendMessage MirrorShrink)
             , ("M-z", sendMessage MirrorExpand)
             --, ("M-<Left>", prevWS)
@@ -139,7 +151,9 @@ myLogHook = myDzenPP
 
 myDzenPP h = defaultPP 
               {
-                ppCurrent = wrap "[" "]",
+                --ppCurrent = wrap "[" "]" "foo",
+                ppCurrent = wrap ("^fg(#ffff99)^bg(" ++ myUrgentBGColor ++ ")^p(4)[") "]^p(4)^fg()^bg()",
+                --ppCurrent = wrap ("^fg(#ffff33)") "[" "]",
                 ppUrgent = wrap ("^fg(" ++ myUrgentFGColor ++ ")^bg(" ++ myUrgentBGColor ++ ")^p(4)") "^p(4)^fg()^bg()",
                 ppVisible = wrap "(" ")",
                 ppSep     = "^fg(" ++ mySeperatorColor ++ ")^r(3x3)^fg()",
