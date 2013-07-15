@@ -1,0 +1,7 @@
+I want to run this when my session starts, but I don't know how to do that without .xsession...
+
+conky |  dzen2 -h 16 -fn '-*-terminus-*-r-normal-*-*-120-*-*-*-*-iso8859-*' -fg '#989898' -ta r -x 1190 -y 1064 -w 730 &
+
+conky |  dzen2 -h 16 -fg '#989898' -ta r -x 1190 -y 1064 -w 730 &
+
+trayer --width 10 --height 16 --transparent true --edge bottom --align right --distancefrom edge --distance 500 --alpha 235 &
