@@ -23,7 +23,6 @@ export SCALA_HOME=/opt/scala-2.9.2
 export M2_HOME=/opt/apache-maven-3.0.4
 export PLAY_HOME=/opt/play-2.1.2
 export PATH=$JDK_HOME/bin:$JRE_HOME/bin:$SCALA_HOME/bin:$M2_HOME/bin:/opt/sbt/bin:/opt/dms-dev/bin:$HOME/bin:/opt/apache-ant-1.8.3/bin:$PLAY_HOME:/opt/weather/bin:$PATH:/home/samuel/work/github/hdhomerun-vlc
-export CVSROOT=:pserver:scox@auscvs.aus.pervasive.com:/cvsmaster
 export DERBY_HOME=/opt/db-derby-10.5.3.0-bin
 
 export vids=/media/Data/Video
