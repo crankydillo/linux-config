@@ -69,12 +69,15 @@ myXPConfig = defaultXPConfig
 
 myWorkspaces = ["1","2","3","4","5","6","7","8","9"]
 
+notesPath = "/home/samuel/Dropbox/NOTES"
+
 myKeys = 
 	[   
             ("M-r", shellPrompt myXPConfig)
             , ("M-f", spawn "firefox")
+            , ("M-n", appendFilePrompt defaultXPConfig notesPath)
+            , ("M-S-n", spawn $ "rxvt -e vi " ++ notesPath)
             , ("M-c", spawn "google-chrome")
-            , ("M-n", appendFilePrompt defaultXPConfig "/home/samuel/NOTES")
             , ("M-e", spawn "/home/samuel/bin/explore")
             , ("M-S-t", spawn "mate-system-monitor")
             , ("M-a", sendMessage MirrorShrink)
