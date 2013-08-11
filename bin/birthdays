@@ -18,9 +18,8 @@ SP_Y=$((SCREEN_HEIGHT - (SP_LINE_HEIGHT * SP_LINES) - BOTTOM_BAR_HEIGHT))
 
 {
 echo "^fg(#ffbb33)Special Dates `date +%Y`"
-gcal -f $RC --highlighting=\<:\>:[:] . |
-tail -n +16 |
-sed 's/</ ^fg(#ffbb33)/g;s/\[/ ^fg(#0a0)/g;s/\(>\|]\)/^bg()^fg() /g'
+gcal --highlighting=no -f $RC  . |
+tail -n +16
 } |
 dzen2 \
      -bg $SP_BG -fg $SP_FG \
