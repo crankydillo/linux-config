@@ -1,0 +1,4 @@
+conky -c /home/samuel/.conkyrc-cal | 
+dzen2 -h 16 -fn '-*-terminus-*-r-normal-*-*-120-*-*-*-*-iso8859-*' \
+-fg '#989898' -ta r -x 1820 -y 1064 -w 100 \
+-e 'entertitle=grabmouse;button1=exec:yjl-cal;button3=exec:birthdays;leavetitle=ungrabmouse'

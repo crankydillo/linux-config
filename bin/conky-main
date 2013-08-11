@@ -1,0 +1,2 @@
+conky |  dzen2 -h 16 -fn '-*-terminus-*-r-normal-*-*-120-*-*-*-*-iso8859-*' \
+-fg '#989898'  -ta r -x 1015 -y 1064 -w 730

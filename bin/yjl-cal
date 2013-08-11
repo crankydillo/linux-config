@@ -1,0 +1,35 @@
+#!/bin/bash
+
+RC="/home/samuel/.gcal-dates"
+SP_LINES=16
+SP_TW=74
+SP_BG='#222'
+SP_FG='#f0f0f0'
+SP_FONT_PIXELSIZE=14
+SP_FONT="-*-terminus-*-r-normal-*-$SP_FONT_PIXELSIZE-*-*-*-*-*-*-*"
+
+SCREEN_HEIGHT=1080
+BOTTOM_BAR_HEIGHT=35
+SCREEN_WIDTH=1920
+SP_WIDTH=620
+SP_X=$((SCREEN_WIDTH-SP_WIDTH))
+SP_LINE_HEIGHT=$((SP_FONT_PIXELSIZE+4))
+SP_Y=$((SCREEN_HEIGHT - (SP_LINE_HEIGHT * SP_LINES) - BOTTOM_BAR_HEIGHT))
+
+{
+echo "^fg(#ffbb33)Calendar `date +%Y`"
+gcal --cc-holiday=US_TX --holiday-list=short --highlighting=\<:\>:[:] . |
+tail -n +5 |
+sed 's/</ ^fg(#ffbb33)/g;s/\[/ ^fg(#0a0)/g;s/\(>\|]\)/^bg()^fg() /g'
+} |
+dzen2 \
+     -bg $SP_BG -fg $SP_FG \
+    -fn "$SP_FONT" -h $SP_LINE_HEIGHT \
+    -x $SP_X -y $SP_Y \
+    -w $SP_WIDTH -l $SP_LINES \
+    -ta center \
+    -sa center \
+    -e 'onstart=uncollapse;enterslave=grabmouse;leaveslave=ungrabmouse;button1=exit' \
+    -p
+    
+

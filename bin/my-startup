@@ -1,0 +1,5 @@
+conky-cal &
+dzen-weather &
+conky-main &
+trayer --width 10 --height 16 --transparent true --edge bottom --align right --distancefrom edge --alpha 235 --distance 750 &
+nm-applet &
