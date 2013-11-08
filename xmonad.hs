@@ -21,6 +21,7 @@ import XMonad.Layout.ThreeColumns
 import XMonad.Layout.ResizableTile
 import XMonad.Layout.NoBorders
 import XMonad.Layout.Spacing
+import XMonad.Hooks.EwmhDesktops
 
 import XMonad.Util.EZConfig
 
@@ -44,7 +45,7 @@ myLayout = ResizableTall 1 (3/100) (1/2) [] ||| Mirror tiled ||| (tabbed shrinkT
      delta   = 3/100
 
 main = do statusBarPipe <- spawnPipe myStatusBar
-          xmonad $ defaultConfig {
+          xmonad $ ewmh defaultConfig {
             terminal    = "rxvt"
             , workspaces = myWorkspaces
             , layoutHook = smartBorders (avoidStruts $ myLayout)
@@ -79,7 +80,8 @@ myKeys =
             , ("M-S-n", spawn $ "rxvt -e vi " ++ notesPath)
             , ("M-c", spawn "google-chrome")
             , ("M-e", spawn "/home/samuel/bin/explore")
-            , ("M-S-t", spawn "mate-system-monitor")
+            , ("M-S-m", spawn "mate-system-monitor")
+            , ("<Print>", spawn "gnome-screenshot")
             , ("M-a", sendMessage MirrorShrink)
             , ("M-z", sendMessage MirrorExpand)
             , ("M-S-<Tab>", moveTo Prev myInterestingWSType)
